@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的網頁 - Centered Buttons</title>
+    <style>
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        /* Container for centering buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between buttons */
+            margin: 20px 0;
+        }
+        
+        /* Button styling */
+        .my-button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Specific button colors */
+        .add-cart {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .add-cart:hover {
+            background-color: #218838;
+        }
+        
+        .buy-now {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .buy-now:hover {
+            background-color: #0056b3;
+        }
+
+        .general-button {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .general-button:hover {
+            background-color: #545b62;
+        }
+
+        /* Product info styling */
+        .product-info {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        /* Link styling */
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section dividers */
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h1>My Web Page with Centered Buttons</h1>
+        
+        <!-- First set of buttons -->
+        <div class="button-container">
+            <button class="my-button general-button">Click</button>
+            <button class="my-button general-button">Rico</button>
+        </div>
+
+        <p>
+            Hello,World!<br/>
+            Today,I want to ...<br/>
+            Thanks 
+        </p>
+
+        <!-- Links section -->
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="https://www.google.com/?hl=zh_TW">Search with Google</a>
+            <br/><br/>
+            <a href="https://www.google.com/?hl=zh_TW" target="_blank">Search with Google in new page</a>
+            <a href="https://www.amazon.com/" target="_blank">Back to Amazon</a>
+        </div>
+    </div>
+
+    <!-- Product section -->
+    <div class="product-info">
+        <h2>Product Details</h2>
+        <p>
+            Nike Black running shoes <br/>
+            $39 - in stock <br/>
+            Free delivery tomorrow.
+        </p>
+
+        <!-- Centered product buttons using flexbox -->
+        <div class="button-container">
+            <button class="my-button add-cart">Add to Cart</button>
+            <button class="my-button buy-now">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- Demo section showing different button arrangements -->
+    <div class="section">
+        <h2>More Button Examples</h2>
+        
+        <h3>Two Buttons Side by Side:</h3>
+        <div class="button-container">
+            <button class="my-button" style="background-color: #dc3545; color: white;">Cancel</button>
+            <button class="my-button" style="background-color: #28a745; color: white;">Confirm</button>
+        </div>
+
+        <h3>Three Buttons Centered:</h3>
+        <div class="button-container">
+            <button class="my-button" style="background-color: #fd7e14; color: white;">Edit</button>
+            <button class="my-button" style="background-color: #6f42c1; color: white;">Save</button>
+            <button class="my-button" style="background-color: #20c997; color: white;">Share</button>
+        </div>
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; color: #6c757d;">
+        <p>This page demonstrates centered buttons using CSS Flexbox</p>
+    </footer>
+</body>
+</html>
