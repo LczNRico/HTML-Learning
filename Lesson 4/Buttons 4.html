@@ -3,12 +3,16 @@
     background-color:rgb(200, 0, 0); /*按鈕背景並調整RGB*/
     color:white;  /*文字顏色*/
     border:none; /*邊框*/
-    height: 36px; /*高度*/
-    width: 105px; /*寬度 */
-    border-radius:2px; /*頂點(邊框)弧度的曲率半徑*/
+    border-radius: 2px; /*頂點(邊框)弧度的曲率半徑*/
     cursor: pointer; /*當鼠標碰到按鈕時轉變成pointer*/
     margin-right: 8px; /*與右側物體的間距大小*/
+    margin-left: 20px; /*與左側物體的間距大小*/
     transition:opacity 0.15s; /*當鼠標觸碰或點擊按鈕時，顏色、透明度的平滑轉換時間*/
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:16px;
+    padding-right:16px;
+    vertical-align: top; /*使按鈕以按鈕上緣對齊*/
   }
 
   .SUBSCRIBE:hover{ /*當鼠標碰到按鈕時，按鈕的透明度變淡(opacity介於0至1)*/
@@ -26,11 +30,14 @@
     border-width: 1px; /*邊框顏色*/
     border-color: rgb(41,118,211); /*邊框顏色*/
     border-radius: 2px;
-    height: 36px;
-    width: 62px;
     cursor: pointer;
     margin-right: 8px;
     transition:background-color 0.15s,color 0.15s;
+    padding-left: 16px; /*按鈕裡面左方的空間*/ /*box model*/
+    padding-right:16px;
+    padding-top:9px; /*按鈕裡面上方的空間*/ /*原本為10px，但border也佔像素，因此上下(top-bottom)各要減1px*/
+    padding-bottom:9px;
+    vertical-align:top;
   }
 
   .JOIN:hover{
@@ -53,6 +60,7 @@
     font-size: 15px; /*字體大小*/
     cursor: pointer;
     transition:box-shadow 0.15s;
+    vertical-align: top;
   }
 
   .TWEET:hover{
