@@ -150,7 +150,61 @@
     .Save:active{
         opacity:0.8;
     }
-
+    /*Pagination*/
+    .Pagination{
+        margin-top:20px;
+        margin-left:10px;
+        margin-right:8px;
+        padding-top:8px;
+        padding-bottom:8px;
+    }
+    /*Search*/
+    .Search{
+        margin-left:4px;
+        margin-right:4px;
+        font-size:18px;
+    }
+    /*Stretch*/
+    .Stretch{
+        background-color:rgb(20, 167, 20);
+        border:none;
+        margin-top:20px;
+        margin-left:10px;
+        margin-right:20px;
+        padding-top:9px;
+        padding-bottom:9px;
+        padding-left:15px;
+        padding-right:15px;
+        cursor:pointer;
+        transition:background-color 0.15s;
+    }
+    .Stretch:hover{
+        background-color:rgb(20,167,20);
+        opacity:0.9;
+    }
+    .Stretch:active{
+        opacity:0.8;
+    }
+    /*Shadow*/
+    .Shadow{
+        background-color:rgb(20,167,20);
+        border:none;
+        margin-right:20px;
+        padding-top:9px;
+        padding-bottom:9px;
+        padding-left:15px;
+        padding-right:15px;
+        box-shadow:5px 5px 10px rgba(0,0,0,0.15);
+        cursor:pointer;
+        transition: box-shadow 0.15s;
+    }
+    .Shadow:hover{
+        opacity:0.9;
+        box-shadow:0px 0px 0px rgba(0,0,0,0);
+    }
+    .Shadow:active{
+        opacity:0.8;
+    }
 </style>
 
 
@@ -187,3 +241,33 @@
 <button class="Save">
     Save
 </button>
+
+<br/>
+
+<button class="Pagination">
+    Back
+</button>
+
+<a classs="Search" href="https://www.google.com/">1</a>
+
+<a classs="Search" href="https://www.google.com/">2</a>
+
+<a classs="Search" href="https://www.google.com/">3</a>
+
+<a classs="Search" href="https://www.google.com/">4</a>
+
+<a classs="Search" href="https://www.google.com/">5</a>
+
+<button class="Pagination">
+    Next
+</button>
+
+<br/>
+
+<button class="Stretch">
+    Stretch
+</button>
+
+<buttom class="Shadow">
+    Shadow
+</buttom>
