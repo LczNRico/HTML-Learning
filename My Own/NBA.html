@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA小組賽排名計算器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .conference {
+            margin-bottom: 40px;
+        }
+        
+        .conference-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .divisions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .division {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .division-title {
+            font-size: 1.3em;
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .team-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .team-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .label {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .calculate-btn {
+            display: block;
+            width: 300px;
+            margin: 30px auto;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+        
+        .results {
+            margin-top: 40px;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .results-title {
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .standings-table {
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .standings-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .standings-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+        
+        .standings-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .standings-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .rank {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+        
+        .rank-1 { color: #FFD700; }
+        .rank-2 { color: #C0C0C0; }
+        .rank-3 { color: #CD7F32; }
+        
+        .win-diff {
+            font-weight: bold;
+            color: #28a745;
+        }
+        
+        .win-diff.negative {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏀 NBA小組賽排名計算器</h1>
+        
+        <!-- 東區 -->
+        <div class="conference">
+            <h2 class="conference-title">東區 (Eastern Conference)</h2>
+            <div class="divisions">
+                <!-- 大西洋賽區 -->
+                <div class="division">
+                    <h3 class="division-title">大西洋賽區</h3>
+                    <div class="team-row">
+                        <div class="label">球隊</div>
+                        <div class="label">勝場</div>
+                        <div class="label">敗場</div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">波士頓塞爾提克</div>
+                        <input type="number" id="BOS-wins" min="0" max="4" value="0">
+                        <input type="number" id="BOS-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">布魯克林籃網</div>
+                        <input type="number" id="BKN-wins" min="0" max="4" value="0">
+                        <input type="number" id="BKN-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">紐約尼克</div>
+                        <input type="number" id="NYK-wins" min="0" max="4" value="0">
+                        <input type="number" id="NYK-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">費城76人</div>
+                        <input type="number" id="PHI-wins" min="0" max="4" value="0">
+                        <input type="number" id="PHI-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">多倫多暴龍</div>
+                        <input type="number" id="TOR-wins" min="0" max="4" value="0">
+                        <input type="number" id="TOR-losses" min="0" max="4" value="0">
+                    </div>
+                </div>
+                
+                <!-- 中央賽區 -->
+                <div class="division">
+                    <h3 class="division-title">中央賽區</h3>
+                    <div class="team-row">
+                        <div class="label">球隊</div>
+                        <div class="label">勝場</div>
+                        <div class="label">敗場</div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">芝加哥公牛</div>
+                        <input type="number" id="CHI-wins" min="0" max="4" value="0">
+                        <input type="number" id="CHI-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">克里夫蘭騎士</div>
+                        <input type="number" id="CLE-wins" min="0" max="4" value="0">
+                        <input type="number" id="CLE-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">底特律活塞</div>
+                        <input type="number" id="DET-wins" min="0" max="4" value="0">
+                        <input type="number" id="DET-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">印第安納溜馬</div>
+                        <input type="number" id="IND-wins" min="0" max="4" value="0">
+                        <input type="number" id="IND-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">密爾瓦基公鹿</div>
+                        <input type="number" id="MIL-wins" min="0" max="4" value="0">
+                        <input type="number" id="MIL-losses" min="0" max="4" value="0">
+                    </div>
+                </div>
+                
+                <!-- 東南賽區 -->
+                <div class="division">
+                    <h3 class="division-title">東南賽區</h3>
+                    <div class="team-row">
+                        <div class="label">球隊</div>
+                        <div class="label">勝場</div>
+                        <div class="label">敗場</div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">亞特蘭大老鷹</div>
+                        <input type="number" id="ATL-wins" min="0" max="4" value="0">
+                        <input type="number" id="ATL-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">夏洛特黃蜂</div>
+                        <input type="number" id="CHA-wins" min="0" max="4" value="0">
+                        <input type="number" id="CHA-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">邁阿密熱火</div>
+                        <input type="number" id="MIA-wins" min="0" max="4" value="0">
+                        <input type="number" id="MIA-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">奧蘭多魔術</div>
+                        <input type="number" id="ORL-wins" min="0" max="4" value="0">
+                        <input type="number" id="ORL-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">華盛頓巫師</div>
+                        <input type="number" id="WAS-wins" min="0" max="4" value="0">
+                        <input type="number" id="WAS-losses" min="0" max="4" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 西區 -->
+        <div class="conference">
+            <h2 class="conference-title">西區 (Western Conference)</h2>
+            <div class="divisions">
+                <!-- 西北賽區 -->
+                <div class="division">
+                    <h3 class="division-title">西北賽區</h3>
+                    <div class="team-row">
+                        <div class="label">球隊</div>
+                        <div class="label">勝場</div>
+                        <div class="label">敗場</div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">丹佛金塊</div>
+                        <input type="number" id="DEN-wins" min="0" max="4" value="0">
+                        <input type="number" id="DEN-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">明尼蘇達灰狼</div>
+                        <input type="number" id="MIN-wins" min="0" max="4" value="0">
+                        <input type="number" id="MIN-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">奧克拉荷馬雷霆</div>
+                        <input type="number" id="OKC-wins" min="0" max="4" value="0">
+                        <input type="number" id="OKC-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">波特蘭拓荒者</div>
+                        <input type="number" id="POR-wins" min="0" max="4" value="0">
+                        <input type="number" id="POR-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">猶他爵士</div>
+                        <input type="number" id="UTA-wins" min="0" max="4" value="0">
+                        <input type="number" id="UTA-losses" min="0" max="4" value="0">
+                    </div>
+                </div>
+                
+                <!-- 太平洋賽區 -->
+                <div class="division">
+                    <h3 class="division-title">太平洋賽區</h3>
+                    <div class="team-row">
+                        <div class="label">球隊</div>
+                        <div class="label">勝場</div>
+                        <div class="label">敗場</div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">金州勇士</div>
+                        <input type="number" id="GSW-wins" min="0" max="4" value="0">
+                        <input type="number" id="GSW-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">洛杉磯快艇</div>
+                        <input type="number" id="LAC-wins" min="0" max="4" value="0">
+                        <input type="number" id="LAC-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">洛杉磯湖人</div>
+                        <input type="number" id="LAL-wins" min="0" max="4" value="0">
+                        <input type="number" id="LAL-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">鳳凰城太陽</div>
+                        <input type="number" id="PHX-wins" min="0" max="4" value="0">
+                        <input type="number" id="PHX-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">沙加緬度國王</div>
+                        <input type="number" id="SAC-wins" min="0" max="4" value="0">
+                        <input type="number" id="SAC-losses" min="0" max="4" value="0">
+                    </div>
+                </div>
+                
+                <!-- 西南賽區 -->
+                <div class="division">
+                    <h3 class="division-title">西南賽區</h3>
+                    <div class="team-row">
+                        <div class="label">球隊</div>
+                        <div class="label">勝場</div>
+                        <div class="label">敗場</div>
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">達拉斯獨行俠</div>
+                        <input type="number" id="DAL-wins" min="0" max="4" value="0">
+                        <input type="number" id="DAL-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">休士頓火箭</div>
+                        <input type="number" id="HOU-wins" min="0" max="4" value="0">
+                        <input type="number" id="HOU-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">曼菲斯灰熊</div>
+                        <input type="number" id="MEM-wins" min="0" max="4" value="0">
+                        <input type="number" id="MEM-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">紐奧良鵜鶘</div>
+                        <input type="number" id="NOP-wins" min="0" max="4" value="0">
+                        <input type="number" id="NOP-losses" min="0" max="4" value="0">
+                    </div>
+                    <div class="team-row">
+                        <div class="team-name">聖安東尼奧馬刺</div>
+                        <input type="number" id="SAS-wins" min="0" max="4" value="0">
+                        <input type="number" id="SAS-losses" min="0" max="4" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="calculate-btn" onclick="calculateStandings()">計算排名 🏆</button>
+        
+        <!-- 排名結果 -->
+        <div class="results" id="results">
+            <h2 class="results-title">📊 小組賽排名結果</h2>
+            <div id="standings-container"></div>
+        </div>
+    </div>
+    
+    <script>
+        const divisions = {
+            '大西洋賽區': ['BOS', 'BKN', 'NYK', 'PHI', 'TOR'],
+            '中央賽區': ['CHI', 'CLE', 'DET', 'IND', 'MIL'],
+            '東南賽區': ['ATL', 'CHA', 'MIA', 'ORL', 'WAS'],
+            '西北賽區': ['DEN', 'MIN', 'OKC', 'POR', 'UTA'],
+            '太平洋賽區': ['GSW', 'LAC', 'LAL', 'PHX', 'SAC'],
+            '西南賽區': ['DAL', 'HOU', 'MEM', 'NOP', 'SAS']
+        };
+        
+        const teamNames = {
+            'BOS': '波士頓塞爾提克', 'BKN': '布魯克林籃網', 'NYK': '紐約尼克', 
+            'PHI': '費城76人', 'TOR': '多倫多暴龍',
+            'CHI': '芝加哥公牛', 'CLE': '克里夫蘭騎士', 'DET': '底特律活塞',
+            'IND': '印第安納溜馬', 'MIL': '密爾瓦基公鹿',
+            'ATL': '亞特蘭大老鷹', 'CHA': '夏洛特黃蜂', 'MIA': '邁阿密熱火',
+            'ORL': '奧蘭多魔術', 'WAS': '華盛頓巫師',
+            'DEN': '丹佛金塊', 'MIN': '明尼蘇達灰狼', 'OKC': '奧克拉荷馬雷霆',
+            'POR': '波特蘭拓荒者', 'UTA': '猶他爵士',
+            'GSW': '金州勇士', 'LAC': '洛杉磯快艇', 'LAL': '洛杉磯湖人',
+            'PHX': '鳳凰城太陽', 'SAC': '沙加緬度國王',
+            'DAL': '達拉斯獨行俠', 'HOU': '休士頓火箭', 'MEM': '曼菲斯灰熊',
+            'NOP': '紐奧良鵜鶘', 'SAS': '聖安東尼奧馬刺'
+        };
+        
+        function calculateStandings() {
+            const container = document.getElementById('standings-container');
+            container.innerHTML = '';
+            
+            for (const [divisionName, teams] of Object.entries(divisions)) {
+                const standings = [];
+                
+                for (const team of teams) {
+                    const wins = parseInt(document.getElementById(`${team}-wins`).value) || 0;
+                    const losses = parseInt(document.getElementById(`${team}-losses`).value) || 0;
+                    const winDiff = wins - losses;
+                    
+                    standings.push({
+                        code: team,
+                        name: teamNames[team],
+                        wins: wins,
+                        losses: losses,
+                        winDiff: winDiff
+                    });
+                }
+                
+                // 排序：先按勝場差，再按勝場數
+                standings.sort((a, b) => {
+                    if (b.winDiff !== a.winDiff) {
+                        return b.winDiff - a.winDiff;
+                    }
+                    return b.wins - a.wins;
+                });
+                
+                // 建立表格
+                const tableDiv = document.createElement('div');
+                tableDiv.className = 'standings-table';
+                
+                let tableHTML = `
+                    <h3 style="padding: 15px; background: #f8f9fa; margin: 0; font-size: 1.3em; color: #764ba2;">
+                        ${divisionName}
+                    </h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>名次</th>
+                                <th>球隊</th>
+                                <th>勝場</th>
+                                <th>敗場</th>
+                                <th>勝場差</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                standings.forEach((team, index) => {
+                    const rank = index + 1;
+                    const rankClass = `rank rank-${rank}`;
+                    const winDiffClass = team.winDiff >= 0 ? 'win-diff' : 'win-diff negative';
+                    const winDiffSign = team.winDiff >= 0 ? '+' : '';
+                    
+                    tableHTML += `
+                        <tr>
+                            <td><span class="${rankClass}">${rank}</span></td>
+                            <td><strong>${team.name}</strong> (${team.code})</td>
+                            <td>${team.wins}</td>
+                            <td>${team.losses}</td>
+                            <td><span class="${winDiffClass}">${winDiffSign}${team.winDiff}</span></td>
+                        </tr>
+                    `;
+                });
+                
+                tableHTML += `
+                        </tbody>
+                    </table>
+                `;
+                
+                tableDiv.innerHTML = tableHTML;
+                container.appendChild(tableDiv);
+            }
+            
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>
