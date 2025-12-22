@@ -1,0 +1,1335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ARC Prize - Leaderboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The ARC-AGI Leaderboard." />
+	<meta property="og:title" content="ARC Prize - Leaderboard" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:description" content="The ARC-AGI Leaderboard." />
+	<meta property="og:url" content="https://arcprize.org/leaderboard" />
+	<meta property="og:site_name" content="ARC Prize" />
+	<meta property="og:image" content="https://arcprize.org/media/images/og-image-default.jpg" />
+	<meta name="twitter:site" content="@ARCprize" />
+	<meta name="twitter:card" content="summary" />
+	<meta property="twitter:title" content="ARC Prize - Leaderboard" />
+	<meta property="twitter:description" content="The ARC-AGI Leaderboard." />
+	<meta property="twitter:image" content="https://arcprize.org/media/images/og-image-default.jpg" />
+	
+    <link rel="icon" type="image/x-icon" href="/media/images/favicon.png">
+    <link rel="stylesheet" href="/media/css/style.css?v=3">
+    
+    <script src="/media/js/script.js"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KVYLYJJF4D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-KVYLYJJF4D');
+    </script>
+    
+</head>
+
+<body>
+    
+    <div class="bg-grid">
+        <div class="bg-grid-lines"></div>
+    </div>
+    <div class="bg-grid-mask"></div>
+    
+    <header>
+    <div>
+        <a href="/" class="logo-link">
+            <div class="logo"></div>
+        </a>
+        <div class="tagline gradient-text">AGI remains unsolved.<br />New ideas still needed.</div>
+    </div>
+    <div class="mobile-menu">
+        <input class="mm-btn" type="checkbox" id="mm-btn" name="mm-btn">
+        <label class="mm-icon" for="mm-btn">
+            <span class="navicon" aria-label="menu 'icon'">
+        </label>
+        <div class="mm-overlay">
+            <nav class="menu-container">
+    <div class="menu-column">
+        <h4>Foundation</h4>
+        <ul>
+            <li><a href="/about">Mission</a></li>
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/donate" class="primary">Donate</a></li>
+        </ul>
+    </div>
+
+    <div class="menu-column">
+        <h4>Benchmark</h4>
+        <ul>
+            <li><a href="/arc-agi">ARC-AGI</a></li>
+            <li><a href="/leaderboard" class="active">Leaderboard</a></li>
+            <li><a href="/play">Play</a></li>
+        </ul>
+    </div>
+
+    <div class="menu-column">
+        <h4>Prize</h4>
+        <ul>
+            <li><a href="/competitions">Competitions</a></li>
+            <li><a href="/guide">Guide</a></li>
+            <li><a href="#" class="modal-btn primary" data-modal-id="signup">Get Started</a></li>           
+            <!-- <li><a href="/policy">Testing</a></li>
+            <li><a href="/partners">Partners</a></li> -->
+        </ul>
+    </div>
+
+    <div class="menu-column">
+        <h4>Community</h4>
+        <ul>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/resources">Resources</a></li>
+        </ul>
+    </div>
+</nav>
+        </div>
+    </div>
+    <nav class="menu-container">
+    <div class="menu-column">
+        <h4>Foundation</h4>
+        <ul>
+            <li><a href="/about">Mission</a></li>
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/donate" class="primary">Donate</a></li>
+        </ul>
+    </div>
+
+    <div class="menu-column">
+        <h4>Benchmark</h4>
+        <ul>
+            <li><a href="/arc-agi">ARC-AGI</a></li>
+            <li><a href="/leaderboard" class="active">Leaderboard</a></li>
+            <li><a href="/play">Play</a></li>
+        </ul>
+    </div>
+
+    <div class="menu-column">
+        <h4>Prize</h4>
+        <ul>
+            <li><a href="/competitions">Competitions</a></li>
+            <li><a href="/guide">Guide</a></li>
+            <li><a href="#" class="modal-btn primary" data-modal-id="signup">Get Started</a></li>           
+            <!-- <li><a href="/policy">Testing</a></li>
+            <li><a href="/partners">Partners</a></li> -->
+        </ul>
+    </div>
+
+    <div class="menu-column">
+        <h4>Community</h4>
+        <ul>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/resources">Resources</a></li>
+        </ul>
+    </div>
+</nav>
+</header>
+    <style>
+.download-section { 
+  position: relative;
+  margin: -40px 0 20px 0;
+  text-align: right;
+  z-index: 10;
+}
+.btn { 
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn:hover { 
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+#chart-wrapper {
+  background: #000;
+  position: relative;
+  padding: 20px;
+}
+#reusable-scatterplot-container {
+  background: #000;
+  position: relative;
+}
+.pill-toggle-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.pill-toggle {
+  position: relative;
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.pill-slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  transition: left 0.3s ease;
+  z-index: 0;
+}
+.pill-option {
+  position: relative;
+  padding: 8px 24px;
+  cursor: pointer;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+  user-select: none;
+}
+.pill-option.active {
+  color: #fff;
+}
+.pill-toggle[data-active="arc-agi-2"] .pill-slider {
+  left: calc(50%);
+}
+.custom-multiselect {
+  position: relative;
+  min-width: 200px;
+}
+.multiselect-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+.multiselect-trigger:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.multiselect-trigger.open {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.multiselect-trigger svg {
+  transition: transform 0.2s ease;
+}
+.multiselect-trigger.open svg {
+  transform: rotate(180deg);
+}
+.multiselect-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  z-index: 1000;
+  display: none;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.multiselect-dropdown::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.multiselect-dropdown.open {
+  display: block;
+}
+.multiselect-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  transition: background 0.2s ease;
+}
+.multiselect-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.multiselect-option.selected {
+  background: rgba(255, 255, 255, 0.15);
+}
+.multiselect-option svg {
+  flex-shrink: 0;
+}
+.multiselect-option .label {
+  flex: 1;
+}
+.multiselect-option .only-btn {
+  opacity: 0;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+  transition: opacity 0.2s ease, color 0.2s ease;
+  pointer-events: none;
+  cursor: pointer;
+}
+.multiselect-option:hover .only-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+.multiselect-option .only-btn:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+.multiselect-search {
+  padding: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 10;
+}
+.multiselect-search input {
+  width: 100%;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  outline: none;
+}
+.multiselect-search input:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}
+.multiselect-search input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+  }
+  .filter {
+    width: 100%;
+  }
+  .custom-multiselect {
+    width: 100%;
+  }
+  #chart-wrapper {
+    padding: 10px;
+  }
+  #leaderboard-title {
+    font-size: 18px !important;
+  }
+  .pill-toggle {
+    font-size: 11px;
+  }
+  .pill-option {
+    padding: 6px 16px;
+  }
+}
+</style>
+<div class="container">
+  <div class="item">
+    <div id="leaderboard-chart"></div>
+    <div id="chart-wrapper">
+      <h1 id="leaderboard-title" class="center" style="margin-bottom: 10px; font-size: 22px;">ARC-AGI-1 Leaderboard</h1>
+      <div id="reusable-scatterplot-container"></div>
+    </div>
+
+    <div class="download-section">
+      <button id="download-chart" class="btn" title="Download chart as PNG">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="pill-toggle-container">
+      <div id="prize-filter" class="pill-toggle">
+        <div class="pill-slider"></div>
+        <div class="pill-option" data-version="arc-agi-1">ARC-AGI-1</div>
+        <div class="pill-option" data-version="arc-agi-2">ARC-AGI-2</div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="filter">
+        <div class="title">Author:</div>
+        <div class="custom-multiselect">
+          <div class="multiselect-trigger" id="provider-trigger">
+            <span class="multiselect-label">All Authors</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M6 8L2 4h8z"/>
+            </svg>
+          </div>
+          <div class="multiselect-dropdown" id="provider-dropdown"></div>
+        </div>
+      </div>
+      <div class="filter">
+        <div class="title">Model type:</div>
+        <div class="custom-multiselect">
+          <div class="multiselect-trigger" id="type-trigger">
+            <span class="multiselect-label">All Types</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M6 8L2 4h8z"/>
+            </svg>
+          </div>
+          <div class="multiselect-dropdown" id="type-dropdown"></div>
+        </div>
+      </div>
+      <div class="filter">
+        <div class="title">Model:</div>
+        <div class="custom-multiselect">
+          <div class="multiselect-trigger" id="model-trigger">
+            <span class="multiselect-label">All Models</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M6 8L2 4h8z"/>
+            </svg>
+          </div>
+          <div class="multiselect-dropdown" id="model-dropdown">
+            <div class="multiselect-search">
+              <input type="text" id="model-search" placeholder="Search models..." autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="item">
+    <h3 class="ntm">Understanding the Leaderboard</h3>
+    <p>
+      ARC-AGI has evolved from its first version (ARC-AGI-1) which measured basic fluid intelligence, to ARC-AGI-2
+      which challenges systems to demonstrate both high adaptability and high efficiency.
+    </p>
+
+    <p>
+      The scatter plot above visualizes the critical relationship between cost-per-task and performance - a key
+      measure of intelligence efficiency. True intelligence isn't just about solving problems, but solving them
+      efficiently with minimal resources.
+    </p>
+
+    <h3>Interpreting the data</h3>
+    <ul>
+      <!-- <li>
+        <strong>Human Performance</strong> solutions represent first-hand data collected by the Prize Foundation,
+        showing performance across different human groups including PhD graduates, PhD students, and members of the
+        general public. These data points establish important benchmarks for human-level problem-solving capabilities.
+      </li> -->
+      <li>
+        <strong>Reasoning Systems Trend Line</strong> solutions display connected points representing the same
+        model at different reasoning levels. These trend lines illustrate how increased reasoning time affects
+        performance, typically showing asymptotic behavior as thinking time increases.
+      </li>
+      <li>
+        <strong>Base LLMs</strong> solutions represent single-shot inference from standard language models
+        like GPT-4.5 and Claude 3.7, without extended reasoning capabilities. These points demonstrate raw model
+        performance without additional reasoning enhancements.
+      </li>
+      <li>
+        <strong>Kaggle Systems</strong> solutions showcase competition-grade submissions from the Kaggle
+        challenge, operating under strict computational constraints ($50 compute budget for 120 evaluation tasks).
+        These represent purpose-built, efficient methods specifically designed for the ARC Prize.
+      </li>
+    </ul>
+
+    <p>For more information on our reporting process, see our <a href="/policy">testing policy</a>.</p>
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="item">
+    <h3 class="ntm">Leaderboard Breakdown</h3>
+    <div id="leaderboard-table"></div>
+    <h4>Notes</h4>
+    <p><small>Only systems which required less than $10,000 to run are shown.</small></p>
+    <p><small>For models that were not able to produce full test out puts, remaining tasks were marked as incorrect.</small></p>
+    <p><small>Results marked as "preview" are unofficial and may be based on
+      incomplete testing.</small></p>
+    <p><small><sup>1</sup> ARC-AGI-2 score estimate based on partial testing results and o1-pro pricing.</small>
+    </p>
+    <p><small><sup>2</sup> Provisional cost estimates based on Gemini 3 Pro pricing. Model to be retested once released.</small>
+    </p>
+  </div>
+</div>
+
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="scripts/leaderboard/data.js"></script>
+<script src="scripts/leaderboard/chart.js"></script>
+<!-- <script src="scripts/leaderboard.js"></script> -->
+<script src="scripts/leaderboard/leaderboard-table.js"></script>
+<script>
+  // Declare scatterplot in a broader scope
+  let scatterplot;
+  // --- Setup Filter State Management ---
+  const filterState = {
+    version: null, // Will be set to versions[0] after data loads
+    providers: [],
+    modelTypes: [],
+    models: [],
+    colorMode: "provider" // Default to color by provider
+  };
+
+  // Add color mapping for versions and types
+  const colorMappings = {
+    provider: {},
+    version: {},
+    type: {
+      "Base LLM": "#1e93ffff",
+      "CoT": "#4ecc30ff",
+      "CoT + Synthesis": "#f93c32ff",
+      "Custom": "#ff841cff",
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', async function () {
+    const startTime = performance.now();
+    // const csvLocation = 'data/leaderboard.csv';
+    // const data = await loadData(csvLocation);
+    // const filteredData = filterData(data);
+    const tidiedData = await loadAllData();
+    
+    // Build provider color mapping from providers data after data is loaded
+    providers.forEach(provider => {
+      colorMappings.provider[provider.displayName] = provider.color;
+    });
+    
+    // Add fallback for providers not in the list
+    colorMappings.provider["Other"] = "#ffdc00ff";
+    
+    colorMappings.version[versions[0]] = "#1e93ffff";
+    colorMappings.version[versions[1]] = "#f93c32ff";
+
+    // Set initial version state to ARC-AGI-1 BEFORE creating chart
+    filterState.version = versions[0];
+
+    // Calculate available width for the chart
+    const container = document.querySelector('.container .item');
+    const containerWidth = container ? container.offsetWidth - 48 : 978; // Account for padding
+    const isMobile = window.innerWidth <= 768;
+    const chartWidth = isMobile ? containerWidth : Math.min(978, Math.max(600, containerWidth));
+
+    // --- Instantiate the reusable chart ---
+    scatterplot = reusableScatterplot()
+      .width(chartWidth)
+      .height(500)
+      .xAxisMin(0.001)
+      .xAxisMax(100)  // Max x-axis in dollars (change this to adjust chart scale)
+      .yAxisMin(0)
+      .yAxisMax(100)
+      .setColorMapping(colorMappings[filterState.colorMode], filterState.colorMode);
+
+    // --- Select the container and call the chart function with ALL data ---
+    d3.select('#reusable-scatterplot-container')
+      .datum(tidiedData.filter(d => d.display))
+      .call(scatterplot);
+
+    // --- Create the leaderboard table ---
+    createLeaderboardTable('leaderboard-table');
+
+    // Function to apply filters based on current state
+    function applyFilters(animationDuration = 750) {
+      let filteredPoints = tidiedData.filter(d => d.display);
+
+      // Always filter by selected version (no "all" option anymore)
+      if (filterState.version) {
+        filteredPoints = filteredPoints.filter(d =>
+          d.datasetId === filterState.version &&
+          providersById[modelsById[d.modelId].providerId].displayName !== "Human"
+        );
+      }
+
+      if (filterState.providers.length > 0) {
+        filteredPoints = filteredPoints.filter(d =>
+          filterState.providers.includes(providersById[modelsById[d.modelId].providerId].displayName)
+        );
+      }
+
+      if (filterState.modelTypes.length > 0) {
+        filteredPoints = filteredPoints.filter(d =>
+          filterState.modelTypes.includes(modelsById[d.modelId].modelType)
+        );
+      }
+
+      if (filterState.models.length > 0) {
+        filteredPoints = filteredPoints.filter(d =>
+          filterState.models.includes(d.modelId)
+        );
+      }
+
+      scatterplot.highlightPoints(filteredPoints, animationDuration);
+    }
+
+    // Apply initial filter immediately after chart creation (no animation)
+    applyFilters(0);
+
+    // Add download chart functionality
+    document.getElementById('download-chart').addEventListener('click', async () => {
+      if (window.posthog && typeof window.posthog.capture === 'function') {
+        posthog.capture('download_leaderboard_chart', { location: window.location.pathname });
+      }
+      const node = document.getElementById('chart-wrapper');
+      
+      // Convert SVG images to data URLs for html2canvas compatibility
+      const svgImages = node.querySelectorAll('image[href]');
+      const originalHrefs = new Map();
+      
+      for (const img of svgImages) {
+        const href = img.getAttribute('href');
+        if (href && !href.startsWith('data:') && href.endsWith('.svg')) {
+          originalHrefs.set(img, href);
+          try {
+            const response = await fetch(href);
+            const svgText = await response.text();
+            const svgBlob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
+            const dataUrl = await new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = () => resolve(reader.result);
+              reader.onerror = reject;
+              reader.readAsDataURL(svgBlob);
+            });
+            img.setAttribute('href', dataUrl);
+          } catch (e) {
+            console.warn('Failed to convert SVG to data URL:', e);
+          }
+        }
+      }
+      
+      // Wait a moment for images to render
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      html2canvas(node, { 
+        backgroundColor: '#000',
+        scale: 2,
+        logging: false,
+        useCORS: true
+      }).then(canvas => {
+        // Restore original hrefs
+        originalHrefs.forEach((href, img) => {
+          img.setAttribute('href', href);
+        });
+        
+        const link = document.createElement('a');
+        link.download = 'arc-prize-leaderboard.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    });
+
+    // --- Setup Pill Toggle for Version Selection ---
+    const defaultFilterColor = "#ffdc00ff";
+
+    // Initialize pill toggle
+    const pillToggle = document.getElementById('prize-filter');
+    const pillOptions = pillToggle.querySelectorAll('.pill-option');
+    const leaderboardTitle = document.getElementById('leaderboard-title');
+
+    // Set UI state to match the already-initialized filterState.version (ARC-AGI-1)
+    pillToggle.setAttribute('data-active', 'arc-agi-1');
+    pillOptions[0].classList.add('active');
+
+    // Add click handlers to pill options
+    pillOptions.forEach((option, index) => {
+      option.addEventListener('click', () => {
+        const versionKey = option.getAttribute('data-version');
+
+        // Update visual state
+        pillOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        pillToggle.setAttribute('data-active', versionKey);
+
+        // Update filter state and title
+        if (versionKey === 'arc-agi-1') {
+          filterState.version = versions[0];
+          leaderboardTitle.textContent = 'ARC-AGI-1 Leaderboard';
+        } else {
+          filterState.version = versions[1];
+          leaderboardTitle.textContent = 'ARC-AGI-2 Leaderboard';
+        }
+
+        // Apply filters
+        applyFilters();
+      });
+    });
+
+    // --- Provider Multi-Select Dropdown ---
+    const uniqueProviders = [...new Set(
+      tidiedData.map(d => providersById[modelsById[d.modelId].providerId].displayName)
+        .filter(name => name !== "Human")
+    )];
+
+    const providerFilters = uniqueProviders.sort().map(provider => ({
+      id: `provider-filter-${provider.replace(/\s+/g, '-').toLowerCase()}`,
+      provider: provider,
+      color: colorMappings.provider[provider] || defaultFilterColor
+    }));
+
+    const providerTrigger = document.getElementById('provider-trigger');
+    const providerDropdown = document.getElementById('provider-dropdown');
+    const providerLabel = providerTrigger.querySelector('.multiselect-label');
+
+    // Create "All" option at the top
+    const allProviderOption = document.createElement('div');
+    allProviderOption.className = 'multiselect-option';
+    allProviderOption.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+    allProviderOption.style.marginBottom = '4px';
+    allProviderOption.style.paddingBottom = '12px';
+
+    const allProviderLabel = document.createElement('span');
+    allProviderLabel.className = 'label';
+    allProviderLabel.textContent = 'All Authors';
+    allProviderLabel.style.fontWeight = 'bold';
+
+    allProviderOption.appendChild(allProviderLabel);
+
+    allProviderOption.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      // Clear all selections
+      filterState.providers = [];
+      providerDropdown.querySelectorAll('.multiselect-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+
+      updateMultiselectLabel(providerLabel, filterState.providers, 'All Authors');
+      applyFilters();
+    });
+
+    providerDropdown.appendChild(allProviderOption);
+
+    // Create dropdown options
+    providerFilters.forEach(filter => {
+      const option = document.createElement('div');
+      option.className = 'multiselect-option';
+      option.dataset.provider = filter.provider;
+
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '20');
+      svg.setAttribute('height', '20');
+      svg.setAttribute('class', 'icon');
+
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('x', '2');
+      rect.setAttribute('y', '2');
+      rect.setAttribute('width', '16');
+      rect.setAttribute('height', '16');
+      rect.setAttribute('rx', '3');
+      rect.setAttribute('fill', filter.color);
+
+      svg.appendChild(rect);
+
+      const label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = filter.provider;
+
+      const onlyBtn = document.createElement('span');
+      onlyBtn.className = 'only-btn';
+      onlyBtn.textContent = 'only';
+
+      option.appendChild(svg);
+      option.appendChild(label);
+      option.appendChild(onlyBtn);
+
+      // "Only" button click handler
+      onlyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        // Clear all selections
+        filterState.providers = [filter.provider];
+        providerDropdown.querySelectorAll('.multiselect-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        option.classList.add('selected');
+
+        updateMultiselectLabel(providerLabel, filterState.providers, 'All Authors');
+        applyFilters();
+      });
+
+      // Regular option click handler
+      option.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isSelected = filterState.providers.includes(filter.provider);
+
+        if (isSelected) {
+          filterState.providers = filterState.providers.filter(p => p !== filter.provider);
+          option.classList.remove('selected');
+        } else {
+          filterState.providers.push(filter.provider);
+          option.classList.add('selected');
+        }
+
+        updateMultiselectLabel(providerLabel, filterState.providers, 'All Authors');
+        applyFilters();
+      });
+
+      providerDropdown.appendChild(option);
+    });
+
+    // Toggle dropdown
+    providerTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = providerDropdown.classList.contains('open');
+
+      // Close all dropdowns first
+      document.querySelectorAll('.multiselect-dropdown').forEach(dd => dd.classList.remove('open'));
+      document.querySelectorAll('.multiselect-trigger').forEach(t => t.classList.remove('open'));
+
+      if (!isOpen) {
+        providerDropdown.classList.add('open');
+        providerTrigger.classList.add('open');
+      }
+    });
+
+    // --- Type Multi-Select Dropdown ---
+    const uniqueModelTypes = [...new Set(
+      tidiedData.map(d => modelsById[d.modelId].modelType)
+        .filter(type => type !== null)
+    )];
+
+    const typeFilters = uniqueModelTypes.sort().map(type => ({
+      id: `type-filter-${type.replace(/\s+/g, '-').toLowerCase()}`,
+      type: type,
+      color: "#808080"
+    }));
+
+    const typeTrigger = document.getElementById('type-trigger');
+    const typeDropdown = document.getElementById('type-dropdown');
+    const typeLabel = typeTrigger.querySelector('.multiselect-label');
+
+    // Create "All" option at the top
+    const allTypeOption = document.createElement('div');
+    allTypeOption.className = 'multiselect-option';
+    allTypeOption.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+    allTypeOption.style.marginBottom = '4px';
+    allTypeOption.style.paddingBottom = '12px';
+
+    const allTypeLabel = document.createElement('span');
+    allTypeLabel.className = 'label';
+    allTypeLabel.textContent = 'All Types';
+    allTypeLabel.style.fontWeight = 'bold';
+
+    allTypeOption.appendChild(allTypeLabel);
+
+    allTypeOption.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      // Clear all selections
+      filterState.modelTypes = [];
+      typeDropdown.querySelectorAll('.multiselect-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+
+      updateMultiselectLabel(typeLabel, filterState.modelTypes, 'All Types');
+      applyFilters();
+    });
+
+    typeDropdown.appendChild(allTypeOption);
+
+    // Create dropdown options
+    typeFilters.forEach(filter => {
+      const option = document.createElement('div');
+      option.className = 'multiselect-option';
+      option.dataset.type = filter.type;
+
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '20');
+      svg.setAttribute('height', '20');
+      svg.setAttribute('class', 'icon');
+
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('x', '2');
+      rect.setAttribute('y', '2');
+      rect.setAttribute('width', '16');
+      rect.setAttribute('height', '16');
+      rect.setAttribute('rx', '3');
+      rect.setAttribute('fill', filter.color);
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M6,6 H14 V8 H11 V14 H9 V8 H6 Z');
+      path.setAttribute('fill', 'white');
+
+      svg.appendChild(rect);
+      svg.appendChild(path);
+
+      const label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = filter.type;
+
+      const onlyBtn = document.createElement('span');
+      onlyBtn.className = 'only-btn';
+      onlyBtn.textContent = 'only';
+
+      option.appendChild(svg);
+      option.appendChild(label);
+      option.appendChild(onlyBtn);
+
+      // "Only" button click handler
+      onlyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        // Clear all selections
+        filterState.modelTypes = [filter.type];
+        typeDropdown.querySelectorAll('.multiselect-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        option.classList.add('selected');
+
+        updateMultiselectLabel(typeLabel, filterState.modelTypes, 'All Types');
+        applyFilters();
+      });
+
+      // Regular option click handler
+      option.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isSelected = filterState.modelTypes.includes(filter.type);
+
+        if (isSelected) {
+          filterState.modelTypes = filterState.modelTypes.filter(t => t !== filter.type);
+          option.classList.remove('selected');
+        } else {
+          filterState.modelTypes.push(filter.type);
+          option.classList.add('selected');
+        }
+
+        updateMultiselectLabel(typeLabel, filterState.modelTypes, 'All Types');
+        applyFilters();
+      });
+
+      typeDropdown.appendChild(option);
+    });
+
+    // Toggle dropdown
+    typeTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = typeDropdown.classList.contains('open');
+
+      // Close all dropdowns first
+      document.querySelectorAll('.multiselect-dropdown').forEach(dd => dd.classList.remove('open'));
+      document.querySelectorAll('.multiselect-trigger').forEach(t => t.classList.remove('open'));
+
+      if (!isOpen) {
+        typeDropdown.classList.add('open');
+        typeTrigger.classList.add('open');
+      }
+    });
+
+    // --- Model Multi-Select Dropdown with Search ---
+    const uniqueModels = [...new Set(
+      tidiedData.map(d => d.modelId)
+        .filter(modelId => {
+          const provider = providersById[modelsById[modelId].providerId];
+          return provider && provider.displayName !== "Human";
+        })
+    )];
+
+    // Sort models by provider first, then by model name
+    const modelFilters = uniqueModels.map(modelId => {
+      const model = modelsById[modelId];
+      const provider = providersById[model.providerId];
+      return {
+        id: `model-filter-${modelId.replace(/\s+/g, '-').toLowerCase()}`,
+        modelId: modelId,
+        modelName: model.displayName || modelId,
+        providerName: provider.displayName,
+        color: colorMappings.provider[provider.displayName] || "#808080"
+      };
+    }).sort((a, b) => {
+      // Sort by provider first, then by model name
+      if (a.providerName !== b.providerName) {
+        return a.providerName.localeCompare(b.providerName);
+      }
+      return a.modelName.localeCompare(b.modelName);
+    });
+
+    const modelTrigger = document.getElementById('model-trigger');
+    const modelDropdown = document.getElementById('model-dropdown');
+    const modelLabel = modelTrigger.querySelector('.multiselect-label');
+    const modelSearch = document.getElementById('model-search');
+
+    // Create options container for models (will hold the actual options)
+    const modelOptionsContainer = document.createElement('div');
+    modelOptionsContainer.className = 'multiselect-options-container';
+    modelDropdown.appendChild(modelOptionsContainer);
+
+    // Create "All" option at the top
+    const allModelOption = document.createElement('div');
+    allModelOption.className = 'multiselect-option';
+    allModelOption.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+    allModelOption.style.marginBottom = '4px';
+    allModelOption.style.paddingBottom = '12px';
+
+    const allModelLabel = document.createElement('span');
+    allModelLabel.className = 'label';
+    allModelLabel.textContent = 'All Models';
+    allModelLabel.style.fontWeight = 'bold';
+
+    allModelOption.appendChild(allModelLabel);
+
+    allModelOption.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      // Clear all selections
+      filterState.models = [];
+      modelOptionsContainer.querySelectorAll('.multiselect-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+
+      updateMultiselectLabel(modelLabel, filterState.models, 'All Models');
+      applyFilters();
+    });
+
+    modelOptionsContainer.appendChild(allModelOption);
+
+    // Store all model options for search filtering
+    const allModelOptions = [];
+
+    // Create dropdown options
+    modelFilters.forEach(filter => {
+      const option = document.createElement('div');
+      option.className = 'multiselect-option';
+      option.dataset.modelId = filter.modelId;
+      option.dataset.modelName = filter.modelName.toLowerCase();
+      option.dataset.providerName = filter.providerName.toLowerCase();
+
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '20');
+      svg.setAttribute('height', '20');
+      svg.setAttribute('class', 'icon');
+
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('x', '2');
+      rect.setAttribute('y', '2');
+      rect.setAttribute('width', '16');
+      rect.setAttribute('height', '16');
+      rect.setAttribute('rx', '3');
+      rect.setAttribute('fill', filter.color);
+
+      svg.appendChild(rect);
+
+      const label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = filter.modelName;
+
+      const onlyBtn = document.createElement('span');
+      onlyBtn.className = 'only-btn';
+      onlyBtn.textContent = 'only';
+
+      option.appendChild(svg);
+      option.appendChild(label);
+      option.appendChild(onlyBtn);
+
+      // "Only" button click handler
+      onlyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        // Clear all selections
+        filterState.models = [filter.modelId];
+        modelOptionsContainer.querySelectorAll('.multiselect-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        option.classList.add('selected');
+
+        updateMultiselectLabel(modelLabel, filterState.models.map(id => modelsById[id].displayName || id), 'All Models');
+        applyFilters();
+      });
+
+      // Regular option click handler
+      option.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isSelected = filterState.models.includes(filter.modelId);
+
+        if (isSelected) {
+          filterState.models = filterState.models.filter(m => m !== filter.modelId);
+          option.classList.remove('selected');
+        } else {
+          filterState.models.push(filter.modelId);
+          option.classList.add('selected');
+        }
+
+        updateMultiselectLabel(modelLabel, filterState.models.map(id => modelsById[id].displayName || id), 'All Models');
+        applyFilters();
+      });
+
+      allModelOptions.push(option);
+      modelOptionsContainer.appendChild(option);
+    });
+
+    // Search functionality
+    modelSearch.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+
+      allModelOptions.forEach(option => {
+        const modelName = option.dataset.modelName;
+        const providerName = option.dataset.providerName;
+
+        if (modelName.includes(searchTerm) || providerName.includes(searchTerm)) {
+          option.style.display = '';
+        } else {
+          option.style.display = 'none';
+        }
+      });
+    });
+
+    // Prevent dropdown from closing when clicking on search input
+    modelSearch.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Toggle dropdown
+    modelTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = modelDropdown.classList.contains('open');
+
+      // Close all dropdowns first
+      document.querySelectorAll('.multiselect-dropdown').forEach(dd => dd.classList.remove('open'));
+      document.querySelectorAll('.multiselect-trigger').forEach(t => t.classList.remove('open'));
+
+      if (!isOpen) {
+        modelDropdown.classList.add('open');
+        modelTrigger.classList.add('open');
+        // Focus search input when opening
+        setTimeout(() => modelSearch.focus(), 100);
+      }
+    });
+
+    // Helper function to update multiselect label
+    function updateMultiselectLabel(labelElement, selectedItems, defaultText) {
+      if (selectedItems.length === 0) {
+        labelElement.textContent = defaultText;
+      } else if (selectedItems.length === 1) {
+        labelElement.textContent = selectedItems[0];
+      } else {
+        labelElement.textContent = `${selectedItems.length} Selected`;
+      }
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.multiselect-dropdown').forEach(dd => dd.classList.remove('open'));
+      document.querySelectorAll('.multiselect-trigger').forEach(t => t.classList.remove('open'));
+    });
+
+    // After creating the scatterplot, set the initial color mapping
+
+    // Add color mode filter handlers
+    const colorModeFilter = d3.select("#color-mode-filter")
+      .selectAll(".filter-item")
+      .on("click", function () {
+        // Update UI
+        d3.selectAll("#color-mode-filter .filter-item").classed("active", false);
+        d3.select(this).classed("active", true);
+
+        // Get the selected color mode from data attribute
+        const newColorMode = d3.select(this).attr("data-mode");
+
+        // Update state
+        filterState.colorMode = newColorMode;
+
+        // Update the scatterplot's color mapping
+        scatterplot.setColorMapping(colorMappings[newColorMode], newColorMode);
+
+        // Apply filters (uses updated color mapping)
+        applyFilters();
+
+        // Update the filter sections to reflect the new color scheme
+        updateFilterColors();
+      });
+
+    // Function to update filter section colors based on selected color mode
+    function updateFilterColors() {
+      // Update provider dropdown option colors
+      const providerOptions = providerDropdown.querySelectorAll('.multiselect-option');
+      providerOptions.forEach(option => {
+        const provider = option.dataset.provider;
+        const rect = option.querySelector('svg rect');
+        if (rect) {
+          if (filterState.colorMode === "provider") {
+            rect.setAttribute('fill', colorMappings.provider[provider] || "#ffdc00ff");
+          } else {
+            rect.setAttribute('fill', "#808080");
+          }
+        }
+      });
+
+      // Update type dropdown option colors
+      const typeOptions = typeDropdown.querySelectorAll('.multiselect-option');
+      typeOptions.forEach(option => {
+        const type = option.dataset.type;
+        const rect = option.querySelector('svg rect');
+        if (rect) {
+          if (filterState.colorMode === "type") {
+            rect.setAttribute('fill', colorMappings.type[type] || "#808080");
+          } else {
+            rect.setAttribute('fill', "#808080");
+          }
+        }
+      });
+    }
+
+    // Initial color update
+    updateFilterColors();
+
+    // Add resize handler for responsive chart
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const container = document.querySelector('.container .item');
+        const containerWidth = container ? container.offsetWidth - 48 : 978;
+        const isMobile = window.innerWidth <= 768;
+        const chartWidth = isMobile ? containerWidth : Math.min(978, Math.max(600, containerWidth));
+
+        if (chartWidth !== scatterplot.width()) {
+          scatterplot.width(chartWidth);
+          d3.select('#reusable-scatterplot-container')
+            .datum(tidiedData.filter(d => d.display))
+            .call(scatterplot);
+        }
+      }, 250); // Debounce resize events
+    });
+
+    const endTime = performance.now();
+    const loadTime = endTime - startTime;
+  });
+</script>
+    <footer>
+    <div class="container">
+        <div class="item">
+            <div class="logo-container">
+                <a href="/"><img src="/media/images/arc-prize-logo-secret.svg" class="logo"></a>
+            </div>            
+        </div>
+        <div class="item">
+            <ul>
+                <li><a href="https://arcprize.kit.com/bc80575d89" class="modal-btn" data-modal-id="newsletter"><img src="/media/images/icon-email.svg"> <span>Newsletter</span></a></li>
+                <li><a href="https://discord.gg/9b77dPAmcA" target="_blank"><img src="/media/images/icon-discord.svg"> <span>Discord</span></a></li>
+                <li><a href="https://twitter.com/arcprize" target="_blank"><img src="/media/images/icon-x.svg"> <span>Twitter</span></a></li>
+                <li><a href="https://www.youtube.com/channel/UC_rdrp-QkrZn-ce9uCE-0EA" target="_blank"><img src="/media/images/icon-youtube.svg"> <span>YouTube</span></a></li>
+                <li><a href="https://github.com/arcprize/ARC-AGI-2" target="_blank"><img src="/media/images/icon-github.svg"><span>GitHub</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container copyright">
+        <div class="item copyright-text">
+            <div>
+                &copy; 2025 ARC Prize, Inc. <a href="/privacy">Privacy</a> <a href="/terms">Terms</a> <a href="/donate">Donate</a> <a href="/policy">Testing Policy</a>
+            </div>
+        </div>
+        <div class="item copyright-tagline">
+            A non-profit for the public advancement of open artificial general intelligence. All rights reserved.
+        </div>
+    </div>
+</footer>
+    <div id="modal-container">
+    <div class="modal-content">
+        <div class="close">
+            <div class="navicon x"></div>
+        </div>
+        <div id="modal-dynamic"></div>
+    </div>
+</div>
+<div id="signup" class="modal">
+    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+    <form action="https://app.convertkit.com/forms/6685080/subscriptions" class="seva-form formkit-form"
+        method="post" data-sv-form="6685080" data-uid="bc80575d89" data-format="inline" data-version="5"
+        data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:false,&quot;url&quot;:&quot;https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}"
+        min-width="400 500 600 700 800">
+        <div data-style="full">
+            <div data-element="column" class="formkit-column">
+                <div class="formkit-header" data-element="header">
+                    <h3 class="ntm">ARC Prize 2026: Stay Updated</h3>
+                    <p>We're making ARC Prize even bigger in 2026. Stay tuned for updates!</p>
+                </div>
+                <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+                <div data-element="fields" class="seva-fields formkit-fields">
+                    <div class="formkit-field"><input class="formkit-input" name="email_address"
+                            aria-label="Email Address" placeholder="Email Address" required="" type="email"></div>
+                    <button data-element="submit" class="formkit-submit formkit-submit bg-magenta"
+                        style="padding:10px 30px;">
+                        <div class="formkit-spinner">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div><span>Sign Up</span>
+                    </button>
+                </div>
+                <div class="formkit-disclaimer" data-element="disclaimer">
+                    <small>No spam. You can unsubscribe at anytime.</small>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="newsletter" class="modal">
+    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+    <form action="https://app.convertkit.com/forms/6685080/subscriptions" class="seva-form formkit-form"
+        method="post" data-sv-form="6685080" data-uid="bc80575d89" data-format="inline" data-version="5"
+        data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:false,&quot;url&quot;:&quot;https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}"
+        min-width="400 500 600 700 800">
+        <div data-style="full">
+            <div data-element="column" class="formkit-column">
+                <div class="formkit-header" data-element="header">
+                    <h3 class="ntm">ARC Prize : Newsletter</h3>
+                    <p>Subscribe to get started and receive official contest updates and news.</p>
+                </div>
+                <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+                <div data-element="fields" class="seva-fields formkit-fields">
+                    <div class="formkit-field"><input class="formkit-input" name="email_address"
+                            aria-label="Email Address" placeholder="Email Address" required="" type="email"></div>
+                    <button data-element="submit" class="formkit-submit formkit-submit bg-magenta"
+                        style="padding:10px 30px;">
+                        <div class="formkit-spinner">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div><span>Subscribe</span>
+                    </button>
+                </div>
+                <div class="formkit-disclaimer" data-element="disclaimer">
+                    <small>No spam. You can unsubscribe at anytime.</small>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+    
+    <a href="#" id="bg-animation">Toggle Animation</a>
+    
+</body>
+
+</html>
