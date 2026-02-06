@@ -1,85 +1,27 @@
-<Style>
-  .SUBSCRIBE{
-    background-color:rgb(200, 0, 0); /*按鈕背景並調整RGB*/
-    color:white;  /*文字顏色*/
-    border:none; /*邊框*/
-    border-radius: 2px; /*頂點(邊框)弧度的曲率半徑*/
-    cursor: pointer; /*當鼠標碰到按鈕時轉變成pointer*/
-    margin-right: 8px; /*與右側物體的間距大小*/
-    margin-left: 20px; /*與左側物體的間距大小*/
-    transition:opacity 0.15s; /*當鼠標觸碰或點擊按鈕時，顏色、透明度的平滑轉換時間*/
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:16px;
-    padding-right:16px;
-    vertical-align: top; /*使按鈕以按鈕上緣對齊*/
-  }
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Button for Lesson 4</title>
+		<link rel="stylesheet" href="Style/Buttons 4.css">
+	</head>
 
-  .SUBSCRIBE:hover{ /*當鼠標碰到按鈕時，按鈕的透明度變淡(opacity介於0至1)*/
-    opacity:0.7;
-  }
+	<body>
+		<button class="SUBSCRIBE">
+			SUBSCRIBE
+		</button>
 
-  .SUBSCRIBE:active{ /*當鼠標點擊按鈕時，按鈕的透明度變淡(opacity介於0至1)*/
-    opacity:0.4;
-  }
-  
-  .JOIN{
-    background-color: white;
-    color:rgb(41,118,211);
-    border-style: solid; /*使邊框顏色變得一致、滑順*/
-    border-width: 1px; /*邊框顏色*/
-    border-color: rgb(41,118,211); /*邊框顏色*/
-    border-radius: 2px;
-    cursor: pointer;
-    margin-right: 8px;
-    transition:background-color 0.15s,color 0.15s;
-    padding-top:9px; /*按鈕裡面上方的空間*/ /*原本為10px，但border也佔像素，因此上下(top-bottom)各要減1px*/
-    padding-bottom:9px;
-    padding-left: 16px; /*按鈕裡面左方的空間*/ /*box model*/
-    padding-right:16px;
-    vertical-align:top;
-  }
+		<button class="JOIN">
+			JOIN
+		</button>
 
-  .JOIN:hover{
-    background-color:rgb(41,118,211); /*當鼠標碰到按鈕時，按鈕背景顏色改變*/
-    color:rgb(255,255,255); /*當鼠標碰到按鈕時，字體顏色改變*/
-  }
+		<button class="TWEET">
+			Tweet
+		</button>
+	</body>
+</html>
 
-  .JOIN:active{
-    opacity:0.7;
-  }
 
-  .TWEET{
-    background-color: rgb(29,155,240);
-    color:white;
-    border: none;
-    border-radius: 18px;
-    font-weight: bold; /*字體粗細*/
-    font-size: 15px; /*字體大小*/
-    cursor: pointer;
-    transition:box-shadow 0.15s;
-    vertical-align: top;
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:16px;
-    padding-right:16px;
-  }
 
-  .TWEET:hover{
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.15); /*(a,b,c,d)stands for(按鈕右邊,按鈕下方,blur,顏色)，用以調整按鈕的陰影狀態*/
-    /*(r,g,b,a)=(red,green,blue,opacity)*/
-  }
 
-</Style>
 
-<button class="SUBSCRIBE">
-  SUBSCRIBE
-</button>
 
-<button class="JOIN">
-  JOIN
-</button>
-
-<button class="TWEET">
-  Tweet
-</button>
