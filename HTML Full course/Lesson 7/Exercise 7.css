@@ -1,0 +1,22 @@
+.cat-image-7a{
+	width:200px;
+	border-radius:15px;
+	margin-bottom:50px;
+	object-fit:cover;
+	object-position:center;
+}
+.cat-image-7b{
+	width:200px;
+	height:200px;
+	margin-bottom:50px;
+	object-fit:cover;
+	object-position:center;
+}
+.cat-image-7c{
+	width:200px;
+	height:200px;
+	border-radius:15px;
+	margin-bottom:50px;
+	border-radius:100%;
+	object-fit:cover;
+}

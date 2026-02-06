@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>YouTube.com clone</title>
+		<style>
+			.thumbnail{
+				width:330px; /*圖片寬度*/ /*若只設定一個，維持圖片原長寬比*/
+				object-fit:contain; /*設定圖片在方框(width,height)內的放置方式*/
+				object-position:top; /*圖片對齊方框(width,height)的上下左右*/
+				border-width:2px;
+				border-style:solid;
+				border-color:red;
+			}
+			.search-bar{
+				font-size:20px;
+				margin-left:12px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img class="thumbnail" src="thumbnails/thumbnail-1.webp">
+		<input class="search-bar" type="text" placeholder="Search">
+	</body>
+
+</html>
