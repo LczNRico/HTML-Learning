@@ -1,0 +1,15 @@
+.title{
+	font-size:25px;
+	font-weight:bold;	
+	text-align:center;
+	font-family:montserrat;
+}
+.description{
+	font-family:montserrat;
+	font-size:20px;
+	text-align:center;
+}
+.span-1{
+	font-family:montserrat;
+	text-decoration:underline;
+}
