@@ -4,24 +4,43 @@
 	<head>
 		<title>YouTube.com clone</title>
 		<style>
+
 			.thumbnail{
 				width:330px; /*圖片寬度*/ /*若只設定一個，維持圖片原長寬比*/
 				object-fit:contain; /*設定圖片在方框(width,height)內的放置方式*/
 				object-position:top; /*圖片對齊方框(width,height)的上下左右*/
-				border-width:2px;
-				border-style:solid;
-				border-color:red;
+				border:none;
+				display:block;
 			}
 			.search-bar{
 				font-size:20px;
 				margin-left:12px;
 			}
+
+			.video-title{
+				width:300px;
+			}
+
 		</style>
 	</head>
 
 	<body>
-		<img class="thumbnail" src="thumbnails/thumbnail-1.webp">
+
 		<input class="search-bar" type="text" placeholder="Search">
+		
+		<img class="thumbnail" src="thumbnails/thumbnail-1.webp">
+		
+
+		<p class="video-title">
+			Talking Tech and AI with Google CEO Sundar Pichai!
+		</p>
+		<p class="video-auther">
+			Marques Brownlee
+		</p>
+		<p class="video-stats">
+			3.4M views &#183; 6 months ago
+		</p>
+
 	</body>
 
 </html>
