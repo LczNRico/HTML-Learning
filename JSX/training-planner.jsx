@@ -1,3 +1,4 @@
+// @preview
 import { useState, useEffect, useRef } from "react";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
